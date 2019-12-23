@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report Width="6.69000005722046in" UnitOfMeasure="Cm" Name="ProjectList" Zoom="1.5" ShowSnapGrid="True" SnapToSnapLines="False" xmlns="http://schemas.telerik.com/reporting/2017/3.0">
+  <Style VerticalAlign="Top">
+    <BorderStyle Top="Outset" Bottom="Outset" />
+    <BorderColor Default="Transparent" Top="LightGray" Bottom="LightGray" />
+    <Padding Left="0cm" Right="0cm" Top="0cm" Bottom="0cm" />
+  </Style>
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ConnectionString="brtConnectionString" SelectCommand="select distinct top 100 p.projectName,&#xD;&#xA;U.PersonFirstName + ' ' + U.PersonLastName as Name,&#xD;&#xA;max_date=max(psr.IntervalEndDate),&#xD;&#xA;psr.OverallStatus ,&#xD;&#xA;b.contents&#xD;&#xA;from project p&#xD;&#xA;join User_LoginUserTable u on&#xD;&#xA;u.UserID=p.manager_id&#xD;&#xA;join BOMStatus b on&#xD;&#xA;b.id=p.stage&#xD;&#xA;join ProjectStatusReport psr on&#xD;&#xA;p.ID=psr.ProjectID&#xD;&#xA;where p.CompanyID=3185 &#xD;&#xA;group by p.projectName,U.PersonFirstName + ' ' + U.PersonLastName,psr.OverallStatus,b.contents&#xD;&#xA;order by max_date" Name="sqlDataSource1" />
+  </DataSources>
+  <Items>
+    <DetailSection Height="1.3779527346293in" Name="detailSection1">
+      <Items>
+        <Table DataSourceName="sqlDataSource1" Width="6.54110559618216in" Height="1.01250277607969in" Left="0.00000013457404269cm" Top="0.900000050465265cm" ColumnHeadersPrintOnEveryPage="True" Name="table1">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="3.51347732543945cm" Height="0.888999998569489cm" Left="6.49989938735962cm" Top="0.599899590015411cm" Value="= Fields.contents" Name="textBox12" StyleName="">
+                    <Style Color="Black" TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Microsoft Sans Serif" Size="8pt" />
+                      <BorderStyle Top="Inset" Bottom="Inset" />
+                      <BorderColor Top="Silver" Bottom="Silver" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="6.08131685908664cm" Height="0.889005912851106cm" Left="11.3998997759847cm" Top="1.49999984860421cm" Value="= Fields.projectName" Name="textBox10" StyleName="">
+                    <Style Color="Black" TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Microsoft Sans Serif" Size="8pt" />
+                      <BorderStyle Top="Inset" Bottom="Inset" />
+                      <BorderColor Top="Silver" Bottom="Silver" />
+                      <Padding Top="0cm" Bottom="0cm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="3.50604250913915cm" Height="0.889002841063443cm" Left="8.7998994731931cm" Top="0.899999747673678cm" Value="= Fields.Name" Name="textBox5" StyleName="">
+                    <Style Color="Black" TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Microsoft Sans Serif" Size="8pt" />
+                      <BorderStyle Top="Inset" Bottom="Inset" />
+                      <BorderColor Top="Silver" Bottom="Silver" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <PictureBox Width="3.5135131579325cm" Height="0.889007042750062cm" Left="8.30000025232632cm" Top="0.999999899069471cm" Sizing="Center" MimeType="" Name="pictureBox1" StyleName="">
+                    <Style Color="Black">
+                      <Font Name="Microsoft Sans Serif" Size="8pt" />
+                      <BorderStyle Top="Inset" Bottom="Inset" />
+                      <BorderColor Top="Silver" Bottom="Silver" />
+                    </Style>
+                    <Bindings>
+                      <Binding Path="Value" Expression="= IIf(Fields.OverallStatus=8,'C:\Program Files (x86)\Progress\Telerik Reporting R3 2017\Report Designer\projectstatus-8.png',iif(Fields.OverallStatus=9,'C:\Program Files (x86)\Progress\Telerik Reporting R3 2017\Report Designer\projectstatus-9.png','C:\Program Files (x86)\Progress\Telerik Reporting R3 2017\Report Designer\projectstatus-10.png'))" />
+                    </Bindings>
+                  </PictureBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="6.08131848898516cm" />
+              <Column Width="3.50606390460048cm" />
+              <Column Width="3.51351340550647cm" />
+              <Column Width="3.51351340550647cm" />
+            </Columns>
+            <Rows>
+              <Row Height="0.889007042750062cm" />
+            </Rows>
+          </Body>
+          <Corner />
+          <RowGroups>
+            <TableGroup Name="detailTableGroup">
+              <Groupings>
+                <Grouping />
+              </Groupings>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="tableGroup">
+              <ReportItem>
+                <TextBox Width="6.08131876673724cm" Height="1.15358331195913cm" Left="0cm" Top="0cm" Value="ProjectName" Name="textBox2">
+                  <Style BackgroundColor="242, 242, 242" Color="0, 112, 192" TextAlign="Center" VerticalAlign="Middle">
+                    <Font Name="Microsoft Sans Serif" Size="10pt" Bold="False" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="group2">
+                  <ReportItem>
+                    <TextBox Width="6.08131837844849cm" Height="20px" Left="0cm" Top="0cm" Name="textBox6" StyleName="" />
+                  </ReportItem>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="tableGroup1">
+              <ReportItem>
+                <TextBox Width="3.50606324622355cm" Height="1.15358331195913cm" Left="0cm" Top="0cm" Value="ManagerName" Name="textBox4">
+                  <Style BackgroundColor="242, 242, 242" Color="0, 112, 192" TextAlign="Center" VerticalAlign="Middle">
+                    <Font Name="Microsoft Sans Serif" Size="10pt" Bold="False" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="group3">
+                  <ReportItem>
+                    <TextBox Width="3.50606322288513cm" Height="20px" Left="0cm" Top="0cm" Name="textBox14" StyleName="" />
+                  </ReportItem>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="group">
+              <ReportItem>
+                <TextBox Width="3.5135131579325cm" Height="1.15000008018208cm" Left="0cm" Top="0cm" Value="OverallStatus" Name="textBox7" StyleName="">
+                  <Style BackgroundColor="242, 242, 242" Color="0, 112, 192" TextAlign="Center" VerticalAlign="Middle">
+                    <Font Name="Microsoft Sans Serif" Size="10pt" Bold="False" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="group4">
+                  <ReportItem>
+                    <TextBox Width="3.51351300445001cm" Height="20px" Left="0cm" Top="0cm" Name="textBox11" StyleName="" />
+                  </ReportItem>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="group1">
+              <ReportItem>
+                <TextBox Width="3.5135131579325cm" Height="1.15000008018208cm" Left="0cm" Top="0cm" Value="Stage" Name="textBox9" StyleName="">
+                  <Style BackgroundColor="242, 242, 242" Color="0, 112, 192" TextAlign="Center" VerticalAlign="Middle">
+                    <Font Name="Microsoft Sans Serif" Size="10pt" Bold="False" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="group5">
+                  <ReportItem>
+                    <TextBox Width="3.51351300445001cm" Height="20px" Left="0cm" Top="0cm" Name="textBox13" StyleName="" />
+                  </ReportItem>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+          </ColumnGroups>
+        </Table>
+        <TextBox Width="6.19999958664181cm" Height="0.700000018278761cm" Left="0cm" Top="0cm" Value="Project list of the company" Name="textBox1">
+          <Style BackgroundColor="242, 242, 242" Color="67, 67, 67">
+            <Font Name="Microsoft Sans Serif" Size="14pt" Bold="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </DetailSection>
+  </Items>
+  <PageSettings PaperKind="A4" Landscape="False" ContinuousPaper="False">
+    <Margins>
+      <MarginsU Left="2cm" Right="2cm" Top="2cm" Bottom="2cm" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <ReportParameters>
+    <ReportParameter Name="companyid" Text="companyid">
+      <Value>
+        <String>3185</String>
+      </Value>
+    </ReportParameter>
+  </ReportParameters>
+</Report>
